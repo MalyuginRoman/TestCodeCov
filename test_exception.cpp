@@ -7,12 +7,12 @@
 #include <cppunit/extensions/TestFactoryRegistry.h>
 #include <cppunit/extensions/HelperMacros.h>
 
-#include "CommandQueue.h"
-#include "CommandMove.h"
-#include "CommandRotate.h"
-#include "CommandLoger.h"
-#include "CommandRepeat.h"
-#include "ExceptionHandler.h"
+#include "include/CommandQueue.h"
+#include "include/CommandMove.h"
+#include "include/CommandRotate.h"
+#include "include/CommandLoger.h"
+#include "include/CommandRepeat.h"
+#include "include/ExceptionHandler.h"
 
 class test_exception : public CPPUNIT_NS::TestCase
 {
