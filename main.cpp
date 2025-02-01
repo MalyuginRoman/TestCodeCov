@@ -15,16 +15,27 @@ int main() {
   success &= (a < e);
 #endif
 #ifdef noRoot
-  double d = discr(1, 0, 1);
+  a = 1.;
+  b = 0.;
+  c = 1.;
+  d = discr(a, b, c);
+  x = solve(a, b, c);
   success &= (d < 0);
 #endif
 #ifdef oneRoot
-  double d = discr(1, 2, 1);
+  a = 1.;
+  b = 2.;
+  c = 1.;
+  d = discr(a, b, c);
+  x = solve(a, b, c);
   success &= (abs(d) < e);
 #endif
 #ifdef twoRoot
-  double d = discr(1, 0, -1);
-  x = solve(1, 0, -1);
+  a = 1.;
+  b = 0.;
+  c = -1.;
+  d = discr(a, b, c);
+  x = solve(a, b, c);
   success &= (abs(d) > e);
 #endif
   return success ? 0 : 1;
