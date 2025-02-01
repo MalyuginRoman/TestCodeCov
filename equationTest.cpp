@@ -27,7 +27,7 @@ protected:
 {
   root x = solve(1, 2, 1);
   double result = 1.;
-  CPPUNIT_ASSERT_MESSAGE((x.x1 - result) < e);
+  CPPUNIT_ASSERT_MESSAGE(std::string("Уравнение решено"), (x.x1 - result) < e);
 }
   void correctA()
 {
