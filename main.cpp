@@ -7,6 +7,7 @@ int main() {
   root x = solve(1, 2, 1);
   double result = 1.;
   success &= ((x.x1 - result) < e);
+  std::cout << "testEquationSolution:" << x.x1 << " " << success << std::endl;
 #endif
 #ifdef correctA
   a = 0.;
