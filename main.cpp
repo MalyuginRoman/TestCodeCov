@@ -8,7 +8,7 @@ int main() {
   success &= ((x.x1 - result) < e);
 #endif
 #ifdef correctA()
-  root x = solve(0, 0, 0);
+  x = solve(0, 0, 0);
   success &= (a < 0);
 #endif
 #ifdef noRoot
@@ -21,6 +21,7 @@ int main() {
 #endif
 #ifdef twoRoot
   double d = discr(1, 0, -1);
+  x = solve(1, 0, -1);
   success &= (abs(d) > e);
 #endif
   return success ? 0 : 1;
