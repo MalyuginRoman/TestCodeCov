@@ -8,7 +8,7 @@
 #include <cppunit/extensions/HelperMacros.h>
 
 
-#include "config.h"
+#include "include/config.h"
 
 class test_macrocommand : public CPPUNIT_NS::TestCase
 {
