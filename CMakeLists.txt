@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.0)
 project(test)
 
-option(TEST_EVEN "test is_even function" ON)
-option(TEST_ODD "test is_odd function" ON)
+option(testEquationSolution "test testEquationSolution function" ON)
+option(noRoot "test noRoot function" ON)
+option(noRoot "test oneRoot function" ON)
+option(noRoot "test twoRoot function" ON)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage -O0")
 
@@ -10,8 +12,10 @@ add_executable(main main.cpp)
 target_include_directories(main PRIVATE include)
 target_compile_definitions(
   main PRIVATE
-  $<$<BOOL:${TEST_EVEN}>:TEST_EVEN>
-  $<$<BOOL:${TEST_ODD}>:TEST_ODD>
+  $<$<BOOL:${testEquationSolution}>:testEquationSolution>
+  $<$<BOOL:${noRoot}>:noRoot>
+  $<$<BOOL:${oneRoot}>:oneRoot>
+  $<$<BOOL:${twoRoot}>:twoRoot>
 )
 
 enable_testing()
