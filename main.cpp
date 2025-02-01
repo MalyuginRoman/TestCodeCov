@@ -9,6 +9,7 @@
 
 int main(int ac, char **av)
 {
+#ifdef test
     CommandQueue cmd;
     CommandMove *cmd_move = new CommandMove;
     CommandRotate *cmd_rotate = new CommandRotate;
@@ -34,4 +35,6 @@ int main(int ac, char **av)
         //cmd.del();                                  !п.4-7
     }
     std::cout << std::endl;
+#endif
+    return 0;
 }
