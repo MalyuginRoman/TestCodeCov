@@ -33,3 +33,7 @@ jobs:
         html-details: true
         html-title: My Project Test Coverage Report
         html-theme: github.green
+    - name: Generate Coveralls Report
+      uses: threeal/gcovr-action@v1.1.0
+      with:
+        coveralls-out: coveralls.json
