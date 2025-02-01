@@ -7,7 +7,6 @@ int main() {
   root x = solve(1, 2, 1);
   double result = 1.;
   success &= ((x.x1 - result) < e);
-  std::cout << "testEquationSolution:" << x.x1 << " " << success << std::endl;
 #endif
 #ifdef correctA
   a = 0.;
@@ -33,9 +32,9 @@ int main() {
   success &= (abs(d) < e);
 #endif
 #ifdef twoRoot
-  a = 1.;
-  b = 0.;
-  c = -1.;
+  a = 2.;
+  b = 5.;
+  c = 3.;
   d = discr(a, b, c);
   x = solve(a, b, c);
   success &= (abs(d) > e);
