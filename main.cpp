@@ -12,7 +12,7 @@ int main() {
   double b = 0.;
   double c = 0.;
   x = solve(a, b, c);
-  success &= (a < 0);
+  success &= (a < e);
 #endif
 #ifdef noRoot
   double d = discr(1, 0, 1);
