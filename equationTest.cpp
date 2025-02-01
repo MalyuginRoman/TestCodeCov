@@ -6,7 +6,7 @@
 #include <cppunit/BriefTestProgressListener.h>
 #include <cppunit/extensions/TestFactoryRegistry.h>
 #include <cppunit/extensions/HelperMacros.h>
-#include "config.h"
+#include "include/config.h"
 
 class TestSolution : public CPPUNIT_NS::TestCase
 {
