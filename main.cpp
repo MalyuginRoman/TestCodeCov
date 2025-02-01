@@ -33,12 +33,10 @@ int main(int ac, char **av)
     std::exception ex;
     ExceptionHandler* handler = new ExceptionHandler(0, ex);
 
+#ifdef test1 // Реализовать класс CheckFuelComamnd и тесты к нему.
     cmd.add(cmd_check);
     cmd.add(cmd_move);
-    cmd.add(cmd_burn);
     cmd.add(cmd_rotate);
-    cmd.add(cmd_burn);
-
     while(!cmd.isEmpty())
     {
         try {
@@ -48,5 +46,54 @@ int main(int ac, char **av)
         }
         cmd.del();
     }
-    std::cout << std::endl;
+#endif
+#ifdef test2 // Реализовать класс BurnFuelCommand и тесты к нему.
+    cmd.add(cmd_check);
+    cmd.add(cmd_move);
+    cmd.add(cmd_burn);
+    cmd.add(cmd_rotate);
+    cmd.add(cmd_burn);
+    while(!cmd.isEmpty())
+    {
+        try {
+            cmd.front()->execute();
+        } catch( std::exception ex) {
+            handler->executeWrite(&cmd, cmd.front(), ex);
+        }
+        cmd.del();
+    }
+#endif
+#ifdef test3 // Реализовать команду движения по прямой с расходом топлива.
+    std::list<ICommand*> cmd_list;
+    cmd_list.push_back(cmd_check);
+    cmd_list.push_back(cmd_move);
+    cmd_list.push_back(cmd_burn);
+    CommandSimpleMacro* cmd_simple = new CommandSimpleMacro(cmd_list);
+    cmd.add(cmd_simple);
+    while(!cmd.isEmpty())
+    {
+        try {
+            cmd.front()->execute();
+        } catch( std::exception ex) {
+            handler->executeWrite(&cmd, cmd.front(), ex);
+        }
+        cmd.del();
+    }
+#endif
+#ifdef test4 // Реализовать команду поворота с расходом топлива.
+    cmd_list.push_back(cmd_check);
+    cmd_list.push_back(cmd_rotate);
+    cmd_list.push_back(cmd_burn);
+    cmd_simple = new CommandSimpleMacro(cmd_list);
+    cmd.add(cmd_simple);
+    while(!cmd.isEmpty())
+    {
+        try {
+            cmd.front()->execute();
+        } catch( std::exception ex) {
+            handler->executeWrite(&cmd, cmd.front(), ex);
+        }
+        cmd.del();
+    }
+#endif
 }
