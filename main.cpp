@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "object.h"
-#include "config.h"
+#include "include/object.h"
+#include "include/config.h"
 
 int main(int ac, char **av)
 {
