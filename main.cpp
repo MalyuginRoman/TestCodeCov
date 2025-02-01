@@ -7,7 +7,7 @@ int main() {
   double result = 1.;
   success &= ((x.x1 - result) < e);
 #endif
-#ifdef correctA()
+#ifdef correctA
   x = solve(0, 0, 0);
   success &= (a < 0);
 #endif
