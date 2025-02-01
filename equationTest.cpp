@@ -40,16 +40,19 @@ protected:
   void noRoot()
 {
   double d = discr(1, 0, 1);
+  root x = solve(1, 0, 1);
   CPPUNIT_ASSERT_MESSAGE(std::string("Вещественных корней нет"), d < 0);
 }
   void oneRoot()
 {
   double d = discr(1, 2, 1);
+  root x = solve(1, 2, 1);
   CPPUNIT_ASSERT_MESSAGE(std::string("Один вещественный корень"), abs(d) < e);
 }
   void twoRoot()
 {
   double d = discr(2, 5, 3);
+  root x = solve(2, 5, 3);
   CPPUNIT_ASSERT_MESSAGE(std::string("Два вещественных корня"), abs(d) > e);
 }
 };
