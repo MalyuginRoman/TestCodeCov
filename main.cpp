@@ -8,7 +8,10 @@ int main() {
   success &= ((x.x1 - result) < e);
 #endif
 #ifdef correctA
-  x = solve(0, 0, 0);
+  double a = 0.;
+  double b = 0.;
+  double c = 0.;
+  x = solve(a, b, c);
   success &= (a < 0);
 #endif
 #ifdef noRoot
