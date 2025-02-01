@@ -2,15 +2,16 @@
 
 int main() {
   bool success = true;
+  double a, b, c, d;
 #ifdef testEquationSolution
   root x = solve(1, 2, 1);
   double result = 1.;
   success &= ((x.x1 - result) < e);
 #endif
 #ifdef correctA
-  double a = 0.;
-  double b = 0.;
-  double c = 0.;
+  a = 0.;
+  b = 0.;
+  c = 0.;
   x = solve(a, b, c);
   success &= (a < e);
 #endif
