@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "math.h"
 const double e = 1E-07;
 struct root
 {
