@@ -7,6 +7,10 @@ int main() {
   double result = 1.;
   success &= ((x.x1 - result) < e);
 #endif
+#ifdef correctA()
+  root x = solve(0, 0, 0);
+  success &= (a < 0);
+#endif
 #ifdef noRoot
   double d = discr(1, 0, 1);
   success &= (d < 0);
