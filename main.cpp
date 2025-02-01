@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "include/object.h"
 #include "include/config.h"
 
