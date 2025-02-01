@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+const double e = 1E-07;
 struct root
 {
         double x1;
