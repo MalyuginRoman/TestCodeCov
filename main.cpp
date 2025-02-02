@@ -38,7 +38,7 @@ int main(int ac, char **av)
 
     RegisterCommand *cmd_registr = new RegisterCommand(&m_map, &m_scope);
 
-    // Scope1 not fuel
+    #ifdef test1 // Scope1 not fuel
     cmd_registr->registerType(
                 "Scope1",
                 "MoveCommand",
@@ -51,7 +51,8 @@ int main(int ac, char **av)
     ioc.resolve("MoveCommand", m_map, m_scope, vector.at(0))->execute();
     ioc.resolve("RotateCommand", m_map, m_scope, vector.at(0), vector.at(1))->execute();
 
-    // Scope2 with fuel
+    #endif
+    #ifdef test2 // Scope2 with fuel
     // формируем макрокоманды
     CheckCommand *cmd_check = new CheckCommand();
     MoveCommand *cmd_move = new MoveCommand();
@@ -79,6 +80,7 @@ int main(int ac, char **av)
                 [&cmd_list]() { return new MacroCommand(cmd_list); });
 
     ioc.resolve("MacroCommand2", m_map, m_scope, vector.at(0), vector.at(1))->execute();
+    #endif
 
     return 0;
 }
