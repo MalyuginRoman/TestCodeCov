@@ -1,8 +1,8 @@
 #include <iostream>
-#include "ioc.h"
-#include "icommand.h"
-#include "object.h"
-#include "producer.h"
+#include "include/ioc.h"
+#include "include/icommand.h"
+#include "include/object.h"
+#include "include/producer.h"
 
 int main(int ac, char **av)
 {
