@@ -7,10 +7,10 @@
 #include <cppunit/extensions/TestFactoryRegistry.h>
 #include <cppunit/extensions/HelperMacros.h>
 
-#include "ioc.h"
-#include "icommand.h"
-#include "object.h"
-#include "producer.h"
+#include "include/ioc.h"
+#include "include/icommand.h"
+#include "include/object.h"
+#include "include/producer.h"
 #include <filesystem>
 #include <thread>
 
