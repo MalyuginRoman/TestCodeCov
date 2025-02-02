@@ -11,8 +11,5 @@ int main(int ac, char **av)
 #ifdef test1
     test_thread1();
 #endif
-#ifdef test2
-    test_thread2();
-#endif
     return 0;
 }
