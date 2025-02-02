@@ -41,6 +41,7 @@ vector <char> clearBuf(vector <char> result)
 
 int main(void)
 {
+#ifdef test1
     const char IP_SERV[] = "10.124.40.14";
     const int PORT_NUM = 615;
     const short BUFF_SIZE = 1024;
@@ -211,6 +212,7 @@ int main(void)
 #else
         close(ServSock);
         close(ClientConn);
+#endif
 #endif
     return 0;
 }
