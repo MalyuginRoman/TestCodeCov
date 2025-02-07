@@ -8,7 +8,7 @@ public:
     void test_game(std::vector <char> message);
     void read_message(std::vector <char> message);
     void test_thread1();
-    void test_thread1();
+    void test_thread2();
 
     objectVector vector_obj;
     std::string gameId_s, objectId_s, operationId_s, args;
