@@ -1,19 +1,20 @@
 #include <iostream>
 #include "icommand.h"
 using namespace std;
+class SafeQueue;
 
 class MacroCommandP
 {
 public:
-    vector<ICommand*> cmds;
+    SafeQueue<ICommand*> cmds;
 
-    MacroCommandP(vector<ICommand*> cmds) :
+    MacroCommandP(SafeQueue<ICommand*> cmds) :
         cmds(cmds)
     {
     }
 };
 
-MacroCommand::MacroCommand(vector<ICommand*> cmds) :
+MacroCommand::MacroCommand(SafeQueue<ICommand*> cmds) :
     imp(new MacroCommandP(cmds))
 {
 }
@@ -24,7 +25,7 @@ void MacroCommand::execute()
 {
     cout << "Start execute of MacroCommand" << endl;
     if(imp->cmds.empty())
-        throw runtime_error ("Сommand list is empty");
+        throw runtime_error ("Сommand queue is empty");
     for(ICommand* i : imp->cmds)
     {
         try
