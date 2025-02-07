@@ -110,9 +110,9 @@ void producer::test_thread2()
     SafeQueue<ICommand*> queueCmds;
   
     CommandQueue cmd;
-    CheckCommand  *cmd_check = new CheckCommand (vector.at(0));
-    CommandMove *cmd_move = new CommandMove(vector.at(0));
-    BurnCommand *cmd_burn = new BurnCommand(vector.at(0));
+    CheckCommand *cmd_check = new CheckCommand();
+    MoveCommand *cmd_move = new MoveCommand(&p_map_c_a, &p_map_c_b, vector.at(0));
+    BurnCommand *cmd_burn = new BurnCommand();
     std::exception ex;
     ExceptionHandler* handler = new ExceptionHandler(0, ex);
 
@@ -120,9 +120,8 @@ void producer::test_thread2()
     cmd_list.push_back(cmd_check);
     cmd_list.push_back(cmd_move);
     cmd_list.push_back(cmd_burn);
-    CommandSimpleMacro* cmd_simple = new CommandSimpleMacro(cmd_list);
+    MacroCommand* cmd_simple = new MacroCommand(cmd_list);
 
-    cmd.add(cmd_simple);
     cmd.add(cmd_check);
     cmd.add(cmd_move);
     cmd.add(cmd_rotate);
