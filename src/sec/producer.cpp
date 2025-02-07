@@ -76,6 +76,46 @@ void producer::test_thread1()
     producer->start(&queueCmds, sc, 1);
 }
 
+void producer::test_thread2()
+{
+    objectVector vector;
+    {
+        int id = 0;
+        coord place;
+        react state;
+
+        place.placeX = 0.;
+        place.placeY = 0.;
+        place.angular = 45;
+
+        state.velocity = 100;
+        state.angularVelocity = 20;
+        state.fuel = 10;
+
+        vector.add(id, state, place);
+    }
+  
+    CommandQueue cmd;
+    CommandFuelCheck *cmd_check = new CommandFuelCheck(vector.at(0));
+    CommandMove *cmd_move = new CommandMove(vector.at(0));
+    CommandFuelBurn *cmd_burn = new CommandFuelBurn(vector.at(0));
+    std::exception ex;
+    ExceptionHandler* handler = new ExceptionHandler(0, ex);
+
+    std::list<ICommand*> cmd_list;
+    cmd_list.push_back(cmd_check);
+    cmd_list.push_back(cmd_move);
+    cmd_list.push_back(cmd_burn);
+    CommandSimpleMacro* cmd_simple = new CommandSimpleMacro(cmd_list);
+
+    cmd.add(cmd_simple);
+
+    StateStatus *sc = new StateStatus(new DefaultState(), cmd_empty);
+    
+    eventloop* producer = new eventloop(&queueCmds, sc);
+    producer->start(&queueCmds, sc, 1);
+}
+
 void producer::start_game()
 {
     objectVector vector;
