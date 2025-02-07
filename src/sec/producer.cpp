@@ -116,10 +116,10 @@ void producer::test_thread2()
     std::exception ex;
     ExceptionHandler* handler = new ExceptionHandler(0, ex);
 
-    std::list<ICommand*> cmd_list;
-    cmd_list.push_back(cmd_check);
-    cmd_list.push_back(cmd_move);
-    cmd_list.push_back(cmd_burn);
+    SafeQueue<ICommand*> cmd_list;
+    queueCmds.push(cmd_check);
+    queueCmds.push(cmd_move);
+    queueCmds.push(cmd_burn);
     MacroCommand* cmd_simple = new MacroCommand(cmd_list);
 
     cmd.add(cmd_check);
