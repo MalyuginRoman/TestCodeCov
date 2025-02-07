@@ -11,6 +11,7 @@
 #include "../spe/imessage.h"
 #include "../spe/istate.h"
 #include "objposition.h"
+#include "../com/commandqueue.h"
 
 void producer::test_thread1()
 {
