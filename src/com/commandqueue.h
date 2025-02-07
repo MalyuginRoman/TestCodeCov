@@ -2,13 +2,14 @@
 #include "icommand.h"
 #include <queue>
 
+template<class T>
 class CommandQueue
 {
 public:
     CommandQueue();
 
-    std::queue<ICommand*> cmd;
-    void add(ICommand* cmd);
+    std::queue<T*> cmd;
+    void add(T* cmd);
     void del();
     bool isEmpty();
     ICommand* front();
