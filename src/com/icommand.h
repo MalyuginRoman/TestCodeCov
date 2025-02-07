@@ -10,6 +10,7 @@
 using namespace std;
 class objectVector;
 class object;
+class SafeQueue;
 struct system_okr;
 
 enum CommandCodes
@@ -196,9 +197,9 @@ public:
     {
         return CommandMacro;
     }
-    MacroCommand(vector<ICommand*> cmds);
+    MacroCommand(SafeQueue<ICommand*> cmds);
     ~MacroCommand();
-    vector<ICommand*> cmds;
+    SafeQueue<ICommand*> cmds;
     void execute();
 private:
     class MacroCommandP* imp;
