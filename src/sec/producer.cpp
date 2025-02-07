@@ -79,6 +79,12 @@ void producer::test_thread1()
 
 void producer::test_thread2()
 {
+// формируем системы окрестностей
+    std::map<int, system_okr> p_map_c_a;
+    std::map<int, system_okr> p_map_c_b;
+    p_map_c_a = func_name(1);
+    p_map_c_b = func_name(2);
+// формируем объекты
     objectVector vector;
     {
         int id = 0;
@@ -95,11 +101,18 @@ void producer::test_thread2()
 
         vector.add(id, state, place);
     }
+
+// помещаем объекты в системы окрестностей
+    p_map_c_a = func_obj(p_map_c_a, &vector);
+    p_map_c_b = func_obj(p_map_c_b, &vector);
+
+    IocContainer<ICommand> ioc;
+    SafeQueue<ICommand*> queueCmds;
   
     CommandQueue cmd;
-    CommandFuelCheck *cmd_check = new CommandFuelCheck(vector.at(0));
+    CheckCommand  *cmd_check = new CheckCommand (vector.at(0));
     CommandMove *cmd_move = new CommandMove(vector.at(0));
-    CommandFuelBurn *cmd_burn = new CommandFuelBurn(vector.at(0));
+    BurnCommand *cmd_burn = new BurnCommand(vector.at(0));
     std::exception ex;
     ExceptionHandler* handler = new ExceptionHandler(0, ex);
 
@@ -110,6 +123,12 @@ void producer::test_thread2()
     CommandSimpleMacro* cmd_simple = new CommandSimpleMacro(cmd_list);
 
     cmd.add(cmd_simple);
+    cmd.add(cmd_check);
+    cmd.add(cmd_move);
+    cmd.add(cmd_rotate);
+    SafeQueue<ICommand*> queueCmds;
+
+    queueCmds.add(cmd);
 
     StateStatus *sc = new StateStatus(new DefaultState(), cmd_empty);
     
