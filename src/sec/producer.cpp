@@ -57,9 +57,9 @@ void producer::test_thread1()
     IocContainer<ICommand> ioc;
     SafeQueue<ICommand*> queueCmds;
 
-    CheckCommand  *cmd_check = new CheckCommand (vector.at(0));
+    CheckCommand  *cmd_check = new CheckCommand ();
     CommandMove *cmd_move = new CommandMove(vector.at(0));
-    BurnCommand *cmd_burn = new BurnCommand(vector.at(0));
+    BurnCommand *cmd_burn = new BurnCommand();
     std::exception ex;
     ExceptionHandler* handler = new ExceptionHandler(0, ex);
 
