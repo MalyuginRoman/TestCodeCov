@@ -77,64 +77,6 @@ void producer::test_thread1()
     producer->start(&queueCmds, sc, 1);
 }
 
-void producer::test_thread2()
-{
-// формируем системы окрестностей
-    std::map<int, system_okr> p_map_c_a;
-    std::map<int, system_okr> p_map_c_b;
-    p_map_c_a = func_name(1);
-    p_map_c_b = func_name(2);
-// формируем объекты
-    objectVector vector;
-    {
-        int id = 0;
-        coord place;
-        react state;
-
-        place.placeX = 0.;
-        place.placeY = 0.;
-        place.angular = 45;
-
-        state.velocity = 100;
-        state.angularVelocity = 20;
-        state.fuel = 10;
-
-        vector.add(id, state, place);
-    }
-
-// помещаем объекты в системы окрестностей
-    p_map_c_a = func_obj(p_map_c_a, &vector);
-    p_map_c_b = func_obj(p_map_c_b, &vector);
-
-    IocContainer<ICommand> ioc;
-    SafeQueue<ICommand*> queueCmds;
-  
-    CommandQueue cmd;
-    CheckCommand *cmd_check = new CheckCommand();
-    MoveCommand *cmd_move = new MoveCommand(&p_map_c_a, &p_map_c_b, vector.at(0));
-    BurnCommand *cmd_burn = new BurnCommand();
-    std::exception ex;
-    ExceptionHandler* handler = new ExceptionHandler(0, ex);
-
-    SafeQueue<ICommand*> cmd_list;
-    queueCmds.push(cmd_check);
-    queueCmds.push(cmd_move);
-    queueCmds.push(cmd_burn);
-    MacroCommand* cmd_simple = new MacroCommand(cmd_list);
-
-    cmd.add(cmd_check);
-    cmd.add(cmd_move);
-    cmd.add(cmd_rotate);
-    SafeQueue<ICommand*> queueCmds;
-
-    queueCmds.add(cmd);
-
-    StateStatus *sc = new StateStatus(new DefaultState(), cmd_empty);
-    
-    eventloop* producer = new eventloop(&queueCmds, sc);
-    producer->start(&queueCmds, sc, 1);
-}
-
 void producer::start_game()
 {
     objectVector vector;
