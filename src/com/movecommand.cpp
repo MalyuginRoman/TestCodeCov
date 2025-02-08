@@ -59,8 +59,8 @@ void MoveCommand::execute()
     throw std::runtime_error ("Unknown position");
   else
   {
-    cmd_search->execute(imp->p_map_a, imp->obj, 1);
-    cmd_search->execute(imp->p_map_b, imp->obj, 2);
+    cmd_search->execute(imp->p_map_a, imp->obj);
+    cmd_search->execute(imp->p_map_b, imp->obj);
   }
   std::cout << "Finish position [" << imp->obj->place().placeX << ", " << imp->obj->place().placeY << "]" << std::endl;
 }
