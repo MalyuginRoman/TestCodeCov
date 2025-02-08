@@ -5,15 +5,15 @@ using namespace std;
 class MacroCommandP
 {
 public:
-    std::vecror<ICommand*> cmds;
+    vecror<ICommand*> cmds;
 
-    MacroCommandP(std::vecror<ICommand*> cmds) :
+    MacroCommandP(vecror<ICommand*> cmds) :
         cmds(cmds)
     {
     }
 };
 
-MacroCommand::MacroCommand(std::vecror<ICommand*> cmds) :
+MacroCommand::MacroCommand(vecror<ICommand*> cmds) :
     imp(new MacroCommandP(cmds))
 {
 }
