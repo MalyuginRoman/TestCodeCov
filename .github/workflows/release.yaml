@@ -1,1 +1,37 @@
+name: C/C++ CI
 
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: install cppunit
+      run: sudo apt install -y libcppunit-dev
+    - name: make
+      run: make
+    - name: make test
+      run: make test
+    - name: Checkout Project
+      uses: actions/checkout@v4.2.2
+    - name: Build Project
+      uses: threeal/cmake-action@v2.0.0
+    - name: Test Project
+      uses: threeal/ctest-action@v1.1.0
+    - name: Check Test Coverage
+      uses: threeal/gcovr-action@v1.1.0
+    - name: Generate HTML Report
+      uses: threeal/gcovr-action@v1.1.0
+      with:
+        html-out: coverage.html
+        html-details: true
+        html-title: My Project Test Coverage Report
+        html-theme: github.green
+    - name: Generate Coveralls Report
+      uses: threeal/gcovr-action@v1.1.0
+      with:
+        coveralls-out: coveralls.json
