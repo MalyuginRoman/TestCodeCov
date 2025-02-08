@@ -59,7 +59,7 @@ private:
 class CheckPositionCommand
 {
 public:
-    void execute(std::map<int, system_okr>* p_map, object* obj);
+    void execute(std::map<int, system_okr>* p_map, object* obj, int number);
 };
 
 class RotateCommand : public ICommand
