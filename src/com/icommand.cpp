@@ -25,11 +25,11 @@ void MacroCommand::execute()
     cout << "Start execute of MacroCommand" << endl;
     if(imp->cmds.empty())
         throw runtime_error ("Сommand queue is empty");
-    for(ICommand* i : imp->cmds)
+    for(int i = 0; i < imp->cmds.size(); i++)
     {
         try
         {
-            i->execute();
+            imp->cmds.pop()->execute();
         } catch (...) {
             throw runtime_error ("Pass the error up");
         }
