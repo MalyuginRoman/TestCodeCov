@@ -6,11 +6,11 @@
 #include <map>
 #include <functional>
 #include <memory>
+#include "../sec/safequeue.h"
 
 using namespace std;
 class objectVector;
 class object;
-class SafeQueue;
 struct system_okr;
 
 enum CommandCodes
