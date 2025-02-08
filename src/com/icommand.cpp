@@ -1,7 +1,6 @@
 #include <iostream>
 #include "icommand.h"
 using namespace std;
-class SafeQueue;
 
 class MacroCommandP
 {
