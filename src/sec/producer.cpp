@@ -57,18 +57,23 @@ void producer::test_thread1()
     IocContainer<ICommand> ioc;
     SafeQueue<ICommand*> queueCmds;
 
-    CheckCommand *cmd_check = new CheckCommand();
-    MoveCommand *cmd_move = new MoveCommand(&p_map_c_a, &p_map_c_b, vector.at(0));
-    RotateCommand *cmd_rotate = new RotateCommand();
-    BurnCommand *cmd_burn = new BurnCommand();
-    EmptyCommand *cmd_empty = new EmptyCommand();
-  
-    queueCmds.push(cmd_check);
-    queueCmds.push(cmd_move);
-    queueCmds.push(cmd_burn);
-    queueCmds.push(cmd_check);
-    queueCmds.push(cmd_rotate);
-    queueCmds.push(cmd_burn);
+    CommandQueue cmd;
+    CheckCommand  *cmd_check = new CheckCommand (vector.at(0));
+    CommandMove *cmd_move = new CommandMove(vector.at(0));
+    BurnCommand *cmd_burn = new BurnCommand(vector.at(0));
+    std::exception ex;
+    ExceptionHandler* handler = new ExceptionHandler(0, ex);
+
+    std::list<ICommand*> cmd_list;
+    cmd_list.push_back(cmd_check);
+    cmd_list.push_back(cmd_move);
+    cmd_list.push_back(cmd_burn);
+    CommandSimpleMacro* cmd_simple = new CommandSimpleMacro(cmd_list);
+
+    cmd.add(cmd_simple);
+    cmd.add(cmd_check);
+    cmd.add(cmd_move);
+    cmd.add(cmd_rotate);
 
     StateStatus *sc = new StateStatus(new DefaultState(), cmd_empty);
     
