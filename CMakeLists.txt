@@ -5,7 +5,7 @@ option(test "test test1 function" ON)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage -O0")
 
-add_executable(main main.cpp src/com/icommand.cpp src/sec/object.cpp src/com/commandqueue.cpp src/spe/eventloop.cpp src/spe/exceptionhandler.cpp src/spe/istate.cpp src/com/movecommand.cpp src/sec/producer.cpp)
+add_executable(main main.cpp src/com/icommand.cpp src/sec/object.cpp src/spe/eventloop.cpp src/spe/exceptionhandler.cpp src/spe/istate.cpp src/com/movecommand.cpp src/sec/producer.cpp)
 target_include_directories(main PRIVATE include)
 target_compile_definitions(
   main PRIVATE
