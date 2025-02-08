@@ -5,15 +5,15 @@ using namespace std;
 class MacroCommandP
 {
 public:
-    SafeQueue<ICommand*> cmds;
+    std::vecror<ICommand*> cmds;
 
-    MacroCommandP(SafeQueue<ICommand*> cmds) :
+    MacroCommandP(std::vecror<ICommand*> cmds) :
         cmds(cmds)
     {
     }
 };
 
-MacroCommand::MacroCommand(SafeQueue<ICommand*> cmds) :
+MacroCommand::MacroCommand(std::vecror<ICommand*> cmds) :
     imp(new MacroCommandP(cmds))
 {
 }
@@ -25,11 +25,11 @@ void MacroCommand::execute()
     cout << "Start execute of MacroCommand" << endl;
     if(imp->cmds.empty())
         throw runtime_error ("Сommand queue is empty");
-    for(int i = 0; i < imp->cmds.size(); i++)
+    for(ICommand* i : imp->cmds)
     {
         try
         {
-            imp->cmds.pop()->execute();
+            i->execute();
         } catch (...) {
             throw runtime_error ("Pass the error up");
         }
