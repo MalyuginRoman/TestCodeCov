@@ -58,9 +58,10 @@ void producer::test_thread1()
     SafeQueue<ICommand*> queueCmds;
 
     CheckCommand  *cmd_check = new CheckCommand ();
-    CommandMove *cmd_move = new CommandMove(&p_map_c_a, &p_map_c_b, vector.at(0));
+    MoveCommand *cmd_move = new MoveCommand(&p_map_c_a, &p_map_c_b, vector.at(0));
     RotateCommand *cmd_rotate = new RotateCommand();
     BurnCommand *cmd_burn = new BurnCommand();
+    EmptyCommand *cmd_empty = new EmptyCommand();
     std::exception ex;
     ExceptionHandler* handler = new ExceptionHandler(0, ex);
 
