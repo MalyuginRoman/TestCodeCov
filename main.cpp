@@ -12,7 +12,7 @@ int main(int ac, char **av)
     std::cout << "Testing thread methods..." << std::endl;
     producer a1;
     a1.test_thread1();
-    a2.test_thread2();
+    //a2.test_thread2();
     #endif
     return 0;
 }
