@@ -57,7 +57,6 @@ void producer::test_thread1()
     IocContainer<ICommand> ioc;
     SafeQueue<ICommand*> queueCmds;
 
-    CommandQueue cmd;
     CheckCommand  *cmd_check = new CheckCommand (vector.at(0));
     CommandMove *cmd_move = new CommandMove(vector.at(0));
     BurnCommand *cmd_burn = new BurnCommand(vector.at(0));
