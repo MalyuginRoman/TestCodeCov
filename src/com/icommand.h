@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ICOMMAND_H
+#define ICOMMAND_H
 #include <iostream>
 #include <vector>
 #include <string>
@@ -6,7 +7,6 @@
 #include <map>
 #include <functional>
 #include <memory>
-#include "../sec/safequeue.h"
 
 using namespace std;
 class objectVector;
@@ -29,12 +29,14 @@ enum CommandCodes
     CommandAddLast = 12,
     CommandMacro = 100
 };
+
 class ICommand
 {
 public:
     virtual int get_Id_cmd() = 0;
     virtual void execute() = 0;
 };
+
 class MoveCommand : public ICommand
 {
 public:
@@ -53,11 +55,13 @@ public:
 private:
     class MoveCommandP* imp;
 };
+
 class CheckPositionCommand
 {
 public:
-    void execute(std::map<int, system_okr>* p_map, object* obj, int number);
+    void execute(std::map<int, system_okr>* p_map, object* obj);
 };
+
 class RotateCommand : public ICommand
 {
 public:
@@ -70,6 +74,7 @@ public:
         cout << "RotateCommand";
     }
 };
+
 class CheckCommand : public ICommand
 {
 public:
@@ -82,6 +87,7 @@ public:
         cout << "CheckCommand";
     }
 };
+
 class BurnCommand : public ICommand
 {
 public:
@@ -94,6 +100,7 @@ public:
         cout << "BurnCommand";
     }
 };
+
 class AddLastCommand : public ICommand
 {
 public:
@@ -106,6 +113,7 @@ public:
         cout << "Start execute AddLastCommand" << endl;
     }
 };
+
 class LogerCommand : public ICommand
 {
 public:
@@ -118,6 +126,7 @@ public:
         cout << "LogerCommand";
     }
 };
+
 class EmptyCommand : public ICommand
 {
 public:
@@ -130,6 +139,7 @@ public:
         cout << "EmptyCommand";
     }
 };
+
 class HardStopCommand : public ICommand
 {
 public:
@@ -142,6 +152,7 @@ public:
         cout << "HardStopCommand";
     }
 };
+
 class SoftStopCommand : public ICommand
 {
 public:
@@ -154,18 +165,7 @@ public:
         cout << "SoftStopCommand";
     }
 };
-class MoveToCommand : public ICommand
-{
-public:
-    int get_Id_cmd()
-    {
-        return CommandMoveTo;
-    }
-    void execute()
-    {
-        cout << "MoveToCommand";
-    }
-};
+
 class InternetCommand : public ICommand
 {
 public:
@@ -178,6 +178,20 @@ public:
         cout << "InternetCommand";
     }
 };
+
+class MoveToCommand : public ICommand
+{
+public:
+    int get_Id_cmd()
+    {
+        return CommandMoveTo;
+    }
+    void execute()
+    {
+        cout << "MoveToCommand";
+    }
+};
+
 class RunCommand : public ICommand
 {
 public:
@@ -190,6 +204,7 @@ public:
         cout << "RunCommand";
     }
 };
+
 class MacroCommand : public ICommand
 {
 public:
@@ -218,55 +233,4 @@ private:
     class RegisterCommandP* imp;
 };
 
-/*template<class T>
-class InternetCommand
-{
-public:
-    T resolve(int operatinID)
-    {
-        switch (operatinID)
-        {
-        case CommandMove:
-            return new MoveCommand();
-            break;
-        case CommandRotate:
-            return new RotateCommand();
-            break;
-        case CommandCheck:
-            return new CheckCommand();
-            break;
-        case CommandBurn:
-            return new BurnCommand();
-            break;
-        case CommandLoger:
-            return new LogerCommand();
-            break;
-        case CommandEmpty:
-            return new EmptyCommand();
-            break;
-        case CommandHardStop:
-            return new HardStopCommand();
-            break;
-        case CommandSoftStop:
-            return new SoftStopCommand();
-            break;
-        case CommandMoveTo:
-            return new MoveToCommand();
-            break;
-        case CommandRun:
-            return new RunCommand();
-            break;
-        case CommandAddLast:
-            return new AddLastCommand();
-            break;
-        case CommandMacro:
-            return new MacroCommand();
-            break;
-        default:
-            throw std::runtime_error("unknown command");
-            break;
-        }
-    }
-private:
-    int operationID;
-};*/
+#endif // ICOMMAND_H
