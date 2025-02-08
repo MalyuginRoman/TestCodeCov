@@ -197,9 +197,9 @@ public:
     {
         return CommandMacro;
     }
-    MacroCommand(SafeQueue<ICommand*> cmds);
+    MacroCommand(vector<ICommand*> cmds);
     ~MacroCommand();
-    SafeQueue<ICommand*> cmds;
+    vector<ICommand*> cmds;
     void execute();
 private:
     class MacroCommandP* imp;
